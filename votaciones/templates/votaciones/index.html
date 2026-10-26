@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/x-icon" href="{% static 'votaciones/img/favicon.ico' %}?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'votaciones/img/favicon.png' %}?v=2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#8f2b12">
+    <title>Festival de la Leyenda Vallenata 2027 | Votaciones</title>
+    <link rel="stylesheet" href="{% static 'votaciones/css/festival.css' %}?v=20261026">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'votaciones:index' %}" aria-label="Ir al inicio">
+            <span class="brand-mark" aria-hidden="true">♪</span>
+            <span><span class="brand-name">Festival de la Leyenda Vallenata</span><span class="brand-subtitle">Sistema de votaciones · 2027</span></span>
+        </a>
+        {% include 'votaciones/includes/navbar.html' %}
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Valledupar · Cultura · Tradición</p>
+                <h1>La pasión vallenata también se vive votando</h1>
+                <p>Participa en el sistema de votaciones del Festival de la Leyenda Vallenata 2027 y descubre las categorías que celebran nuestra música y sus grandes talentos.</p>
+                <a class="button" href="{% url 'votaciones:categorias' %}">Explorar categorías <span aria-hidden="true">→</span></a>
+            </div>
+            <img class="hero-art" src="https://festivalvallenato.com/wp-content/uploads/2025/10/Rafa-Israel-1.png" alt="Artistas vallenatos con acordeón en la imagen promocional del Festival" loading="eager">
+        </section>
+
+        <section class="section" id="ediciones">
+            <div class="section-heading">
+                <p class="eyebrow">Celebremos nuestra tradición</p>
+                <h2>Ediciones disponibles</h2>
+                <p>Consulta las ediciones habilitadas para el sistema de votaciones.</p>
+            </div>
+            <div class="edition-grid">
+                {% for edicion in ediciones %}
+                    <article class="edition-card">
+                        <p class="card-kicker">Festival Vallenato</p>
+                        <h3>{{ edicion.año }} · {{ edicion.nombre_edicion }}</h3>
+                        <p>{% if edicion.año == 2026 %}Explora los concursos, finalistas y ganadores de la edición anterior.{% else %}Consulta las categorías y votaciones de esta edición.{% endif %}</p>
+                        <span class="edition-label">{% if edicion.activa %}Edición actual{% else %}Edición histórica{% endif %}</span>
+                        <a class="category-cta" href="{% url 'votaciones:detalle_edicion' edicion.año %}">Explorar edición <span aria-hidden="true">→</span></a>
+                    </article>
+                {% empty %}
+                    <div class="empty-state">Todavía no hay ediciones registradas en la base de datos.</div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><strong>Festival de la Leyenda Vallenata 2027</strong> · Sistema de votaciones académico · <a href="{% url 'votaciones:contacto' %}">Contacto</a></footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/x-icon" href="{% static 'votaciones/img/favicon.ico' %}?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'votaciones/img/favicon.png' %}?v=2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#8f2b12">
+    <title>Contacto | Festival de la Leyenda Vallenata 2027</title>
+    <link rel="stylesheet" href="{% static 'votaciones/css/festival.css' %}?v=20261026">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'votaciones:index' %}" aria-label="Ir al inicio">
+            <span class="brand-mark" aria-hidden="true">♪</span>
+            <span><span class="brand-name">Festival de la Leyenda Vallenata</span><span class="brand-subtitle">Sistema de votaciones · 2027</span></span>
+        </a>
+        {% include 'votaciones/includes/navbar.html' %}
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <p class="eyebrow">Estamos para escucharte</p>
+            <h1>Contacto</h1>
+            <p>¿Tienes alguna pregunta o comentario? Comunícate con la Fundación Festival de la Leyenda Vallenata.</p>
+        </section>
+
+        <section class="contact-layout section" aria-labelledby="contact-title">
+            <div class="contact-info">
+                <p class="card-kicker">Fundación Festival de la Leyenda Vallenata</p>
+                <h2 id="contact-title">Contáctanos</h2>
+                <p class="contact-intro">Encuentra nuestros datos de contacto y envíanos tu mensaje.</p>
+
+                <article class="contact-detail">
+                    <span class="contact-icon" aria-hidden="true">⌖</span>
+                    <div><h3>Dirección</h3><p>Carrera 19 No. 6N-39<br>Valledupar, Colombia</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Carrera+19+No.+6N-39+Valledupar+Colombia" target="_blank" rel="noopener noreferrer">Ver ubicación en el mapa ↗</a></div>
+                </article>
+                <article class="contact-detail">
+                    <span class="contact-icon" aria-hidden="true">☎</span>
+                    <div><h3>Teléfono</h3><p><a href="tel:+573157463143">(+57) 315 746 3143</a></p></div>
+                </article>
+                <article class="contact-detail">
+                    <span class="contact-icon" aria-hidden="true">✉</span>
+                    <div><h3>Correo electrónico</h3><p><a href="mailto:presidencia@festivalvallenato.com">presidencia@festivalvallenato.com</a></p></div>
+                </article>
+                <div class="contact-note"><strong>Nota:</strong> este apartado pertenece al sistema académico de votaciones 2027 y presenta los datos de contacto publicados por el Festival.</div>
+            </div>
+
+            <div class="contact-form-card">
+                <p class="eyebrow">Envíanos tus inquietudes</p>
+                <h2>Escríbenos</h2>
+                <p class="contact-intro">Completa los siguientes campos para preparar tu mensaje de contacto.</p>
+                <form class="contact-form" action="mailto:presidencia@festivalvallenato.com" method="post" enctype="text/plain">
+                    <div class="form-row">
+                        <div class="form-field"><label for="contact-name">Nombre</label><input id="contact-name" name="Nombre" type="text" placeholder="Tu nombre completo" autocomplete="name" required></div>
+                        <div class="form-field"><label for="contact-email">E-mail</label><input id="contact-email" name="Correo" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label for="contact-phone">Celular</label><input id="contact-phone" name="Celular" type="tel" placeholder="Tu número de contacto" autocomplete="tel"></div>
+                        <div class="form-field"><label for="contact-subject">Asunto</label><input id="contact-subject" name="Asunto" type="text" placeholder="Motivo del mensaje" required></div>
+                    </div>
+                    <div class="form-field"><label for="contact-message">Mensaje</label><textarea id="contact-message" name="Mensaje" rows="5" placeholder="Escribe aquí tu mensaje..." required></textarea></div>
+                    <button class="button" type="submit">Preparar mensaje <span aria-hidden="true">→</span></button>
+                    <p class="form-help">Al enviar, se abrirá la aplicación de correo configurada en tu dispositivo. Este formulario no envía mensajes directamente desde el sistema.</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="map-section" aria-label="Ubicación del Festival">
+            <div class="map-heading"><p class="card-kicker">Encuéntranos</p><h2>Estamos en Valledupar</h2></div>
+            <iframe title="Mapa de la Fundación Festival de la Leyenda Vallenata" src="https://www.google.com/maps?q=Carrera%2019%20No.%206N-39%20Valledupar%20Colombia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
+    </main>
+
+    <footer class="site-footer"><strong>Festival de la Leyenda Vallenata 2027</strong> · Sistema de votaciones académico · <a href="{% url 'votaciones:index' %}">Inicio</a> · <a href="{% url 'votaciones:categorias' %}">Categorías</a></footer>
+</body>
+</html>

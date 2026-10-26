@@ -1,0 +1,17 @@
+<nav class="header-actions" aria-label="Navegación y acceso de usuario">
+    <a href="{% url 'votaciones:index' %}"{% if request.resolver_match.url_name == 'index' %} class="nav-active" aria-current="page"{% endif %}>Inicio</a>
+    <a href="{% url 'votaciones:index' %}#ediciones"{% if request.resolver_match.url_name == 'detalle_edicion' %} class="nav-active" aria-current="page"{% endif %}>Ediciones</a>
+    <a href="{% url 'votaciones:categorias' %}"{% if request.resolver_match.url_name == 'categorias' or request.resolver_match.url_name == 'detalle_categoria' %} class="nav-active" aria-current="page"{% endif %}>Categorías</a>
+    <a href="{% url 'votaciones:contacto' %}"{% if request.resolver_match.url_name == 'contacto' %} class="nav-active" aria-current="page"{% endif %}>Contacto</a>
+    {% if user.is_authenticated %}
+        <span class="welcome">Bienvenido, <strong>{{ user.username }}</strong></span>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    {% else %}
+        <span class="welcome">Estás como visitante</span>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+        <a href="{% url 'usuarios:registro' %}">Crear cuenta</a>
+    {% endif %}
+</nav>
